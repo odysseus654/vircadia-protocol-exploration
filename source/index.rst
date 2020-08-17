@@ -12,6 +12,7 @@ This page grew out of a need to have a more structured place to develop document
 
 .. toctree::
    :maxdepth: 2
+   :titlesonly:
    :caption: Contents:
 
    udt/main
