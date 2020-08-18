@@ -6,6 +6,7 @@ Handling the Messages
    :titlesonly:
    :caption: Contents:
 
+   packets
    asset
    audio
    avatar

@@ -17,9 +17,9 @@ Control Packet Format
         |_______________________________________________________________|
 
 
-- C: Control bit (this is a control packet so always 1)
-- Type: 15-bit value identifying the type of control signal
-- Control Data: optional 32-bit integer whose meaning is determined by the packet type
+- **C:** Control bit (this is a control packet so always 1)
+- **Type:** 15-bit value identifying the type of control signal
+- **Control Data:** optional 32-bit integer whose meaning is determined by the packet type
 
 Control Signals
 ...............
@@ -55,25 +55,25 @@ Data Packet Format
         |_______________________________________________________________|
 
 
-- C: Control bit (this is a data packet so always 0)
-- R: Reliable bit (if set then packet retry is attempted)
-- M: Message bit (if set then this is part of a multi-packet message)
-- O: Obfuscation (if non-zero then the contents of the message are XORed with the key)
+- **C:** Control bit (this is a data packet so always 0)
+- **R:** Reliable bit (if set then packet retry is attempted)
+- **M:** Message bit (if set then this is part of a multi-packet message)
+- **O:** Obfuscation (if non-zero then the contents of the message are XORed with the key)
     * 00 - no obfuscation
     * 01 - 0x6362726973736574
     * 10 - 0x7362697261726461
     * 11 - 0x72687566666d616e
-- Sequence Number: The incrementing ID identifying this data packet within the datastream
+- **Sequence Number:** The incrementing ID identifying this data packet within the datastream
 
 The following fields are only present in the packet if the M (Message) bit is set:
 
-- P: Position - the packet’s position within the message:
+- **P:** Position - the packet’s position within the message:
     * 00 - this is the only packet in the message
     * 10 - first packet in multi-packet message
     * 11 - middle packet in multi-packet message (i.e. neither first nor last)
     * 01 - last packet in multi-packet message
-- Message Number: The incrementing ID identifying this message within the datastream
-- Message Part Number: The packet number identifying this packet within its message
+- **Message Number:** The incrementing ID identifying this message within the datastream
+- **Message Part Number:** The packet number identifying this packet within its message
 
 Reference: this was an excerpt from networking/src/udt/Packet.h:
 
