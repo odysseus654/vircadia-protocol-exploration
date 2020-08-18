@@ -3,6 +3,8 @@ Current Implementation
 
 These are only approximate as I familiarize myself with the code and may be subject to revision as more information emerges
 
+All multi-byte fields are in "network byte order" (big endian)
+
 Control Packet Format
 ---------------------
 
