@@ -13,7 +13,8 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-
+import sphinx_rtd_theme
+import recommonmark
 
 # -- Project information -----------------------------------------------------
 
@@ -28,6 +29,8 @@ author = 'Heather Anderson'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinx_rtd_theme",
+    "recommonmark"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
