@@ -27,7 +27,7 @@ Control Packet Format
 - **C:** Control bit (this is a control packet so always 1)
 - **Type:** 15-bit value identifying the type of control signal
 - **Additional Data:** Optional 29-bit integer whose meaning is determined by the packet type
-- **Timestamp:** The time the packet was sent, measured in milliseconds from the start of the connection
+- **Timestamp:** The time the packet was sent, measured in microseconds from the start of the connection
 - **Destination Connection ID:** Connection ID on the destination machine this packet is targeted at
 - **Control Data:** Any additional information the packet type may require, as a series of 32-bit integers
 
@@ -59,8 +59,8 @@ Control Signals
         - Additional Data: the ID of this ACK
         - Control Data:
             - **Index 0:** Data Packet ID, all prior packets received successfully
-            - **Index 1:** RTT (estimated round-trip time), in milliseconds
-            - **Index 2:** RTT Variance, in milliseconds
+            - **Index 1:** RTT (estimated round-trip time), in microseconds
+            - **Index 2:** RTT Variance, in microseconds
             - **Index 3:** Available buffer size - The current number of additional un-ACKed packets the receiver is willing to handle
     - "Heavy" ACK:
         - Contains everything in a "normal" ACK:
@@ -122,6 +122,6 @@ Data Packet Format
     * 01 - last packet in multi-packet message
 - **O:** Ordered - If this is set then this packet cannot be processed before any prior packet
 - **Message ID Number:** The incrementing ID identifying this message within the datastream
-- **Timestamp:** The time the packet was sent, measured in milliseconds from the start of the connection
+- **Timestamp:** The time the packet was sent, measured in microseconds from the start of the connection
 - **Destination Connection ID:** Connection ID on the destination machine this packet is targeted at
 - **Payload:** The contents of the packet

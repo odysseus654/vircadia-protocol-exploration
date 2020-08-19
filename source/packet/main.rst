@@ -9,4 +9,4 @@ This section describes receiving binary messages from the UDT layer and interpre
 
    current
    proposed
-   negotiated
+   sdxf/main

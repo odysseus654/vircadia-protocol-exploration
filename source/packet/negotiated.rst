@@ -1,2 +1,0 @@
-Proposed (Protocol Negotiation) (stub)
-======================================
