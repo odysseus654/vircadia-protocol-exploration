@@ -1,6 +1,10 @@
 Proposed (UDT Restructuring)
 ============================
 
+.. note::
+
+    I have been working on this project over the last few months, current progress is available here: `(GitHub branch) <https://github.com/odysseus654/vircadia/tree/feature/udt>`_
+
 This represents the next set of "headers" after extracting the payload from a UDT packet.
 
 - **Flags** *(1 byte / 8 bits)* **:** Describes how to process the rest of the packet
