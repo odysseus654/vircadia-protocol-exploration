@@ -16,7 +16,7 @@ This represents the next set of "headers" after extracting the payload from a UD
 - **Local Node ID** *(2 bytes / 16 bits little-endian)* **:** If the "L" bit is set in the flags, the Local Node ID represents the node this was sent from
 - **MD5 Verification** *(16 bytes)* **:** If the "V" bit is set in the flags, the Verification represents a hash of the remains of the packet as well as a value specific to the node
 
-*Note: I'm increasingly uncertain of the purpose of the "Local Node ID" field and may move to dropping it from all packets*
+.. note:: I'm increasingly uncertain of the purpose of the "Local Node ID" field and may move to dropping it from all packets
 
 The contents of the individual packet are determined by an undocumented collection of calls to ExtendedIODevice::readPrimitive() (little-endian) and QDataStream_ (proprietary).
 

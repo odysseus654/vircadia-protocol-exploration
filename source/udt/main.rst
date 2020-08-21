@@ -9,4 +9,4 @@ assignment clients, interfaces, and ICE servers
    :caption: Contents:
 
    current
-   proposed
+   proposed/main

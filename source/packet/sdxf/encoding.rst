@@ -5,7 +5,7 @@ An SDXF element is a field described as either a single value of a limited numbe
 
 Attributes:
     - **Structured:** The contents of the packet can be nested to arbitrary depths
-    - **Optionally Processed:** Any fields not processed by a client can be trivially skipped over by adding the size of the field *(which may not be used in Vircadia)*
+    - **Optionally Processed:** Any fields not processed by a client can be trivially skipped over by adding the size of the field *(which may be unused in Vircadia)*
     - **Selected Fields:** Each field is identified by a unique ID, so fields can be added, removed, or reordered
     - **Self-describing:** The datatype of the contents is part of the description, so the server can change the datatype without breaking the protocol
 

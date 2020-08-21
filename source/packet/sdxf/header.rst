@@ -15,4 +15,4 @@ With the proposed protocol negotiation described above, the messages received fr
 - **MD5 Verification** *(16 bytes)* **:** If the "V" bit is set in the flags, the Verification represents a hash of the remains of the packet as well as a value specific to the node
 - **Contents**: A collection of SDXF elements, the outermost field of which describes the Packet Type being used for each
 
-*Note: I'm increasingly uncertain of the purpose of the "Local Node ID" field and may move to dropping it from all packets*
+.. note:: I'm increasingly uncertain of the purpose of the "Local Node ID" field and may move to dropping it from all packets

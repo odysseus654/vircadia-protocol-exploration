@@ -6,7 +6,7 @@ Proposed (Protocol Negotiation)
     This is NOT the UDT protocol reworking I have been working on.  This is a significant change to the internal protocol contents below the UDT
     level that I hope to be working on once I clear the current project.  The UDT protocol rewrite is likely required before work can begin on
     this.  In the meantime, this is a proposal being written out to elicit some discussion.
-    Any future work I do on this will likely be here: https://github.com/odysseus654/vircadia/tree/feature/sdxf
+    Any future work I do on this will likely be here: `(GitHub branch) <https://github.com/odysseus654/vircadia/tree/feature/sdxf>`_
 
 Currently the contents of packets are a hand-optimized list of fields, either explicitly written out or lightly-encoded using QDataStream_.
 Similar to use of protobuf_ these structures cannot change without also changing the protocol incompatibly, as they are not self-describing and

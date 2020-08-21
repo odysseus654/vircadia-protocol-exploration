@@ -1,5 +1,5 @@
-Proposed (UDT Restructuring)
-============================
+Layout and Signals
+==================
 
 All multi-byte fields are in "network byte order" (big endian)
 
