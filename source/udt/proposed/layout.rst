@@ -47,6 +47,8 @@ Control Signals
             - **-1:** Response (second phase of a connection)
             - **-2:** Response2 (third phase of a rendezvous connection)
             - **1002:** Refused (added by the reference implementation, connection request rejected)
+        - **Index 6:** The socket ID of the sending connection
+        - **Index 7:** The SYN cookie from the server
 - 1: KeepAlive *(Sent over an otherwise-idle connection to keep it alive)*
     - Additional Data: unused
     - Control Data: none
@@ -73,7 +75,8 @@ Control Signals
         - A span of one packet *(i.e. the packets on either side have been received)*: one entry containing the data packet ID
         - A span of multiple packets: one entry with the starting data packet ID with its high bit set, followed by an entry with the ending data packet ID
 - 4: Congestion Alert
-    - *This was used in earlier versions of the UDT spec.  It has been removed from the current spec. The implementation will receive and approximate the original behavior but will not generate such packets*
+    - *This was used in earlier versions of the UDT spec.  It has been removed from the current spec.*
+    - *The implementation will receive and approximate the original behavior but does not generate such packets*
     - Additional Data: unused
     - Control Data: none
 - 5: Shutdown *(Controlled shutdown of the connection, may be initiated by either side*)
@@ -87,6 +90,11 @@ Control Signals
     - Control Data:
         - **Index 0:** The first Data Packet ID for this message
         - **Index 1:** The last Data Packet ID for this message
+- 8: Error code
+    - *This was not in the UDT spec but was used by the reference implemenation and the "file transfer" example to signal "errono" results attempting to read the file from disk.*
+    - *The implemenation will receive and permit subclasses to handle this packet type but does not generate it*
+    - Additional Data: (not used by reference implemenation)
+    - Control Data: (reference implementation had a single integer representing an error code)
 - 0x7FFF: User-defined Packet type
     - The user-defined packet type is stored in the "Unused" field in the control packet header
     - Additional Data: user-defined

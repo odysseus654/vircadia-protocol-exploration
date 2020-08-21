@@ -15,7 +15,7 @@ by a series of RFCs (which have all expired) and a reference implementation (whi
 
 - `Homepage <https://udt.sourceforge.io/>`_
 - `Last RFC <https://www.ietf.org/archive/id/draft-gg-udt-03.txt>`_ (referencing v4 of the protocol)
-- `Reference implementation <https://github.com/odysseus654/udt>`_ (converted from CVS and merged with some fiew stray Git commits)
+- `Reference implementation <https://github.com/odysseus654/udt>`_ (converted from CVS and merged with some few stray Git commits)
 
 The efforts here have taken the RFC and reference implementaton, initially creating a partial implementation in Go, then porting that implemenation into C++.  As such, it is
 a lot more thread-heavy than the reference implemenation and also hopefully separated more from the original implemenation decisions of the original reference implemenation
