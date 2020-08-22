@@ -18,9 +18,3 @@ This page grew out of a need to have a more structured place to develop document
    udt/main
    packet/main
    message/main
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`

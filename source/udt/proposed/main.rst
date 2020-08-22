@@ -28,5 +28,6 @@ the reference implemenation.  I have also tweaked the protocol a bit to promote 
     :titlesonly:
     :caption: Contents:
 
+    api
     layout
     behavior

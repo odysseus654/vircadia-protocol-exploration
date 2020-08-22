@@ -24,11 +24,13 @@ Receiving a packet.  The code is responsible for processing the following packet
 
 The UDT packet receiver also watches for the **ACK** timer event, which indicates it should send a new ACK packet out to the peer
 
-When attempting to process received packets:
+When attempting to process a received packet:
 
-- something
+- Search for all proceeding and following packets (if any) required to assemble a complete message.
+- 
 
-.. note:: (Break with spec) The code doesn't appear to be checking "ACK Period" after receiving data packets, we need to add code to account for congestion controls making use of this Parameters
+
+.. note:: Need to review "light-ACK" processing when receiving packets, making sure it's consistent with reference docs especially when dealing with non-processable packets.
 
 .. note::
 

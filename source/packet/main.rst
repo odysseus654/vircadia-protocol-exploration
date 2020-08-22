@@ -8,5 +8,5 @@ This section describes receiving binary messages from the UDT layer and interpre
    :caption: Contents:
 
    current
-   proposed
+   udt
    sdxf/main
