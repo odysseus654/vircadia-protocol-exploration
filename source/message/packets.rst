@@ -95,10 +95,9 @@ Message Types
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 21  | :yes:`Y` | :no:`N`  |          | DomainServerAddedNode             | NodeList::processDomainServerAddedNode                                 |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 22  | :yes:`Y` | :no:`N`  | :no:`N`  | ICEServerPeerInformation          | DomainGatekeeper::processICEPeerInformationPacket, |br|                |
-|     |          |          |          |                                   | DomainHandler::processICEResponsePacket                                |
+| 22  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEServerPeerInformation`                                                                            |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 23  | :yes:`Y` | :no:`N`  | :no:`N`  | ICEServerQuery                    |                                                                        |
+| 23  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEServerQuery`                                                                                      |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 24  | :yes:`Y` | :yes:`Y` |          | OctreeStats                       | Agent::handleOctreePacket, |br|                                        |
 |     |          |          |          |                                   | AvatarMixer::handleOctreePacket, |br|                                  |
@@ -134,13 +133,11 @@ Message Types
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 37  | :no:`N`  | :yes:`Y` |          | EntityEditNack                    | EntityEditPacketSender::processEntityEditNackPacket                    |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 38  | :yes:`Y` | :no:`N`  | :no:`N`  | ICEServerHeartbeat                |                                                                        |
+| 38  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEServerHeartbeat`                                                                                  |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 39  | :yes:`Y` | :no:`N`  | :no:`N`  | ICEPing                           | DomainGatekeeper::processICEPingPacket, |br|                           |
-|     |          |          |          |                                   | NodeList::processICEPingPacket                                         |
+| 39  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEPing`                                                                                             |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 40  | :yes:`Y` | :no:`N`  | :no:`N`  | ICEPingReply                      | DomainGatekeeper::processICEPingReplyPacket, |br|                      |
-|     |          |          |          |                                   | DomainHandler::processICEPingReplyPacket                               |
+| 40  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEPingReply`                                                                                        |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 41  | :yes:`Y` | :yes:`Y` |          | EntityData                        | Agent::handleOctreePacket, |br|                                        |
 |     |          |          |          |                                   | AvatarMixer::handleOctreePacket, |br|                                  |
@@ -188,13 +185,13 @@ Message Types
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 59  | :yes:`Y` | :yes:`Y` |          | MessagesUnsubscribe               | MessagesMixer::handleMessagesUnsubscribe                               |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 60  | :yes:`Y` | :no:`N`  | :no:`N`  | ICEServerHeartbeatDenied          | DomainServer::processICEServerHeartbeatDenialPacket                    |
+| 60  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEServerHeartbeatDenied`                                                                            |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 61  | :yes:`Y` | :blu:`D` |          | AssetMappingOperation             | AssetServer::handleAssetMappingOperation                               |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 62  | :blu:`I` | :yes:`Y` |          | AssetMappingOperationReply        | AssetClient::handleAssetMappingOperationReply                          |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 63  | :yes:`Y` | :no:`N`  | :no:`N`  | ICEServerHeartbeatACK             | DomainServer::processICEServerHeartbeatACK                             |
+| 63  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEServerHeartbeatACK`                                                                               |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 64  | :yes:`Y` | :yes:`Y` |          | NegotiateAudioFormat              | AudioMixer::queueAudioPacket                                           |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
