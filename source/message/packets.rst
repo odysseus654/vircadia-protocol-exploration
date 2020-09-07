@@ -7,6 +7,8 @@ List of Packet Types
 
 .. role:: blu
 
+.. role:: blk
+
 .. raw:: html
 
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -15,12 +17,14 @@ List of Packet Types
        $('.yes').closest('TD').addClass('yes-parent');
        $('.no').closest('TD').addClass('no-parent');
        $('.blu').closest('TD').addClass('blu-parent');
+       $('.blk').closest('TD').addClass('blk-parent');
      });
    </script>
    <style>
-      TD.yes-parent { background-color:#00ff00 !important;}
-      TD.no-parent { background-color:#ff0000 !important;}
-      TD.blu-parent { background-color:#0000ff !important;}
+      TD.yes-parent { background-color:#0f0 !important;}
+      TD.no-parent { background-color:#f00 !important;}
+      TD.blu-parent { background-color:#00f !important; color: #fff !important; }
+      TD.blk-parent { background-color:#000 !important; color: #fff !important; }
    </style>
 
 .. |br| raw:: html
@@ -38,14 +42,17 @@ Message Types
     - **N (red):** packet does not contain a Local-ID
     - **D (blue):** packet contains a Local-ID but is flagged as "Domain Sourced"
 - C: Connection (part of analysis for new UDT logic)
-    - **N (red):** packet is NOT sent as part of a UDT connection
+    - **N (red):** packet is NOT sent as part of a UDT connection (requires a custom UDT packet type)
+    - **Y (green):** packet IS sent as part of a UDT connection (especially when it's "unsourced" in the current model)
+    - **B (blue):** packet MAY be sent as either part of a UDT connection (i.e. packet type) or outside of a connection (i.e. custom UDT packet type)
+    - **X (black):** packet will not be used in the new UDT logic
 - **Name:** Name of the packet type
 - **Handler Registrations:** List of functions that have registered an interest in processing this packet type
 
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 |     | V        | S        | C        | Name                              | Handler Registrations                                                  |
 +=====+==========+==========+==========+===================================+========================================================================+
-| 1   | :yes:`Y` | :no:`N`  |          | StunResponse                      | *(no references, delete on next protocol bump?)*                       |
+| 1   | :yes:`Y` | :no:`N`  | :blk:`X` | StunResponse                      | *(no references, delete on next protocol bump?)*                       |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 2   | :yes:`Y` | :no:`N`  |          | DomainList                        | NodeList::processDomainServerList                                      |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
@@ -95,7 +102,7 @@ Message Types
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 21  | :yes:`Y` | :no:`N`  |          | DomainServerAddedNode             | NodeList::processDomainServerAddedNode                                 |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 22  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEServerPeerInformation`                                                                            |
+| 22  | :yes:`Y` | :no:`N`  | :blu:`B` | :ref:`ICEServerPeerInformation`                                                                            |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 23  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEServerQuery`                                                                                      |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
@@ -133,11 +140,11 @@ Message Types
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 37  | :no:`N`  | :yes:`Y` |          | EntityEditNack                    | EntityEditPacketSender::processEntityEditNackPacket                    |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 38  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEServerHeartbeat`                                                                                  |
+| 38  | :yes:`Y` | :no:`N`  | :yes:`Y` | :ref:`ICEServerHeartbeat`                                                                                  |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 39  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEPing`                                                                                             |
+| 39  | :yes:`Y` | :no:`N`  | :blk:`X` | :ref:`ICEPing`                                                                                             |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 40  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEPingReply`                                                                                        |
+| 40  | :yes:`Y` | :no:`N`  | :blk:`X` | :ref:`ICEPingReply`                                                                                        |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 41  | :yes:`Y` | :yes:`Y` |          | EntityData                        | Agent::handleOctreePacket, |br|                                        |
 |     |          |          |          |                                   | AvatarMixer::handleOctreePacket, |br|                                  |
@@ -185,13 +192,13 @@ Message Types
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 59  | :yes:`Y` | :yes:`Y` |          | MessagesUnsubscribe               | MessagesMixer::handleMessagesUnsubscribe                               |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 60  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEServerHeartbeatDenied`                                                                            |
+| 60  | :yes:`Y` | :no:`N`  | :yes:`Y` | :ref:`ICEServerHeartbeatDenied`                                                                            |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 61  | :yes:`Y` | :blu:`D` |          | AssetMappingOperation             | AssetServer::handleAssetMappingOperation                               |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 62  | :blu:`I` | :yes:`Y` |          | AssetMappingOperationReply        | AssetClient::handleAssetMappingOperationReply                          |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
-| 63  | :yes:`Y` | :no:`N`  | :no:`N`  | :ref:`ICEServerHeartbeatACK`                                                                               |
+| 63  | :yes:`Y` | :no:`N`  | :yes:`Y` | :ref:`ICEServerHeartbeatACK`                                                                               |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
 | 64  | :yes:`Y` | :yes:`Y` |          | NegotiateAudioFormat              | AudioMixer::queueAudioPacket                                           |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
@@ -286,3 +293,13 @@ Message Types
 | 104 | :yes:`Y` | :no:`N`  |          | AvatarZonePresence                | DomainServer::processAvatarZonePresencePacket, |br|                    |
 |     |          |          |          |                                   | ScreenshareScriptingInterface::processAvatarZonePresencePacketOnClient |
 +-----+----------+----------+----------+-----------------------------------+------------------------------------------------------------------------+
+
+Proposed List of UDT Custom Packet Types:
+
++----+-----------------------------------+
+|    | Name                              |
++====+===================================+
+| 1  | :ref:`ICEServerQuery`             |
++----+-----------------------------------+
+| 2  | :ref:`ICEServerPeerInformation`   |
++----+-----------------------------------+
