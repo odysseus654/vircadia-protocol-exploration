@@ -98,3 +98,27 @@ Reference: this was an excerpt from networking/src/udt/Packet.h:
         //    M: Message bit
         //    O: Obfuscation level
         //    P: Position bits
+
+STUN Packet Format
+------------------
+These packets follow `RFC 5389 https://tools.ietf.org/html/rfc5389`_:
+
+    .. code::
+
+        |3   2                   1                   0                  |
+        |1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0|
+        |---------------------------------------------------------------|
+        |0 0|      Message Type         |      Message Length           |
+        |---------------------------------------------------------------|
+        |                        Magic Cookie                           |
+        |---------------------------------------------------------------|
+        |                                                               |
+        |                    Transaction ID (96 bits)                   |
+        |_______________________________________________________________|
+
+The **Magic Cookie** in this packet is always the fixed value 0x2112A442 (in network byte order)
+
+This packet if received in the middle of a UDT stream would identify itself as a data packet.
+While there is no obvious logic in the code to prevent this from being interpreted as a data packet (which would be unlikely unless we had a UDT connection
+with a STUN server *and* the message number matched the Cookie),
+there is logic that receives all UDT packets and checks to see if they might be a STUN response packet.

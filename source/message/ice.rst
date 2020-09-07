@@ -46,10 +46,10 @@ Sent by an ICE server in response to a failed heartbeat attempt (either corrupt 
 
 No contents.  Sent in response to a ICEServerHeartbeat message
 
-.. _ICEServerQuery:
-
 Connection Mediation
 ....................
+
+.. _ICEServerQuery:
 
 ICEServerQuery
 --------------

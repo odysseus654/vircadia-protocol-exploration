@@ -133,3 +133,31 @@ Data Packet Format
 - **Timestamp:** The time the packet was sent, measured in microseconds from the start of the connection
 - **Destination Connection ID:** Connection ID on the destination machine this packet is targeted at
 - **Payload:** The contents of the packet
+
+
+STUN Packet Format
+------------------
+These packets follow `RFC 5389 <https://tools.ietf.org/html/rfc5389>`_:
+
+    .. code::
+
+        |3   2                   1                   0                  |
+        |1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0|
+        |---------------------------------------------------------------|
+        |0 0|      Message Type         |      Message Length           |
+        |---------------------------------------------------------------|
+        |                        Magic Cookie                           |
+        |---------------------------------------------------------------|
+        |                                                               |
+        |                    Transaction ID (96 bits)                   |
+        |_______________________________________________________________|
+
+The **Magic Cookie** in this packet is always the fixed value 0x2112A442 (in network byte order)
+
+This packet if received in the middle of a UDT stream would identify itself as an ordered data packet.
+The current logic will detect the presence of the Magic Cookie and flag this as a Stun packet.
+There may potentially be confusion with an actual data packet which would be "Ordered" with a Message ID of 0x112A442
+
+.. note::
+
+    TODO: see if there's a better way to not accidentally flag UDT packets as Stun packets
