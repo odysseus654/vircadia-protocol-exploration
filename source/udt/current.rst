@@ -101,7 +101,7 @@ Reference: this was an excerpt from networking/src/udt/Packet.h:
 
 STUN Packet Format
 ------------------
-These packets follow `RFC 5389 https://tools.ietf.org/html/rfc5389`_:
+These packets follow `RFC 5389 <https://tools.ietf.org/html/rfc5389>`_:
 
     .. code::
 
