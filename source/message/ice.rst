@@ -18,8 +18,8 @@ Maintain an existing registration with an ICE server
 Contents:
 
 * **senderUUID** QUuid
-* **publicSocket** HifiSockAddr (IP Address + port number)
-* **localSocket** HifiSockAddr (IP Address + port number)
+* **publicSocket** SockAddr (IP Address + port number)
+* **localSocket** SockAddr (IP Address + port number)
 * **signature** cryptographic hash of the contents of everything above this point
 
 If this action is successful it returns ICEServerHeartbeatACK_, otherwise it returns ICEServerHeartbeatDenied_
@@ -61,8 +61,8 @@ Request to connect to a server that may be behind a firewall, mediated by an ICE
 Contents:
 
 * **senderUUID** QUuid
-* **publicSocket** HifiSockAddr (IP Address + port number)
-* **localSocket** HifiSockAddr (IP Address + port number)
+* **publicSocket** SockAddr (IP Address + port number)
+* **localSocket** SockAddr (IP Address + port number)
 * **connectRequestID** QUuid
 
 If connectionRequestID matches the UUID of a server registered with us then send (PeerInformationPacket) to *both* the requester the identified destination server
