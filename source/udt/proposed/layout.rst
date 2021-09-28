@@ -108,7 +108,7 @@ Data Packet Format
         |3   2                   1                   0                  |
         |1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0|
         |---------------------------------------------------------------|
-        |C|                   Packet ID Number                          |
+        |C| S |               Packet ID Number                          |
         |---------------------------------------------------------------|
         | P |O|              Message ID Number                          |
         |---------------------------------------------------------------|
@@ -122,6 +122,11 @@ Data Packet Format
 
 
 - **C:** Control bit (this is a data packet so always 0)
+- **S:** *(extension to UDT spec)* Packet obfuscation (previously called "salt"), used when a packet is being repeatedly re-sent. If non-zero then the payload bytes are XORed with the key
+    * 00 - no obfuscation
+    * 01 - 0x6362726973736574
+    * 10 - 0x7362697261726461
+    * 11 - 0x72687566666d616e
 - **Packet ID Number:** The incrementing ID identifying this data packet within the datastream
 - **P:** Position - the packet’s position within the message:
     * 00 - this is the only packet in the message
